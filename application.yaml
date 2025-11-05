@@ -1,0 +1,29 @@
+server:
+  port: 8888  # default port for config server
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/<your-username>/config-cloud.git
+          default-label: main   # or 'master', depending on your repo
+          # optional:
+          # search-paths: config-repo
+          # username: your-git-username
+          # password: your-personal-access-token (for private repos)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# Optional: if using Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
